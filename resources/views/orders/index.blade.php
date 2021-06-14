@@ -144,7 +144,6 @@
 
 @section('script')
     <script>
-
         $('.add_more').on('click', function(){
             var product = $('.product_id').html();
             var numberofrow = ($('.addMoreProduct tr').length - 0)+1;
@@ -164,7 +163,6 @@
         });
  
         function TotalAmount(){
-
             var total = 0;
             $('.total_amount').each(function(i,e){
                 var amount = $(this).val - 0;
@@ -172,9 +170,8 @@
             });
 
             $('.total').html(total);
-            });
+        };
 
-        }
         $('.addMoreProduct').delegate('.product_id', 'change', function(){
             var tr = $(this).parent().parent();
             var price = tr.find('.product_id option:selected').attr('data-price');
@@ -187,7 +184,7 @@
             TotalAmount();
         });
 
-        $('.addMoreProduct').delegate('.quantity, .discount', 'keyup' function(){
+        $('.addMoreProduct').delegate('.quantity', '.discount', 'keyup', function(){
             var tr = $(this).parent().parent();
             var qty = tr.find('.quantity').val()-0;
             var disc = tr.find('.discount').val()-0;
