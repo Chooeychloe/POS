@@ -23,7 +23,7 @@
             <table>
                 <tr class="tabletitle">
                     <td class="item"><h2>Item</h2></td>
-                    <td class="Hours"><h2>QUantity</h2></td>
+                    <td class="Hours"><h2>Quantity</h2></td>
                     <td class="Rate"><h2>Unit</h2></td>
                     <td class="Rate"><h2>Discount</h2></td>
                     <td class="Rate"><h2>Subtotal</h2></td>
