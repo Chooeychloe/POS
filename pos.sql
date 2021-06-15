@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2021 at 12:44 PM
+-- Generation Time: Jun 15, 2021 at 02:43 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -90,28 +90,17 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `order__details`
+-- Dumping data for table `orders`
 --
 
-CREATE TABLE `order__details` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `unitprice` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `discount` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `orders` (`id`, `name`, `phone`, `created_at`, `updated_at`) VALUES
+(26, NULL, NULL, '2021-06-15 00:41:26', '2021-06-15 00:41:26');
 
 -- --------------------------------------------------------
 
@@ -198,6 +187,13 @@ CREATE TABLE `transactions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`id`, `order_id`, `paid_amount`, `balance`, `payment_method`, `user_id`, `transac_date`, `transac_amount`, `created_at`, `updated_at`) VALUES
+(1, 26, 20000, 3800, 'cash', 6, '2021-06-15', 15000, '2021-06-15 00:41:26', '2021-06-15 00:41:26');
+
 -- --------------------------------------------------------
 
 --
@@ -224,7 +220,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `is
 (3, 'Kristel Faye Bañadera', 'fey@gmail.com', NULL, 'd41d8cd98f00b204e9800998ecf8427e', 2, NULL, '2021-06-13 03:17:52', '2021-06-13 05:55:11'),
 (4, 'Julius Damas', 'juls@gmail.com', NULL, 'd41d8cd98f00b204e9800998ecf8427e', 1, NULL, '2021-06-13 05:42:50', '2021-06-13 05:55:03'),
 (5, 'Aldous', 'dark@gmail.com', NULL, 'd41d8cd98f00b204e9800998ecf8427e', 2, NULL, '2021-06-13 05:55:34', '2021-06-13 05:55:34'),
-(6, 'admin', 'admin@admin.com', NULL, '$2y$10$4KIDIFlHzh5EkwCm2/AugO7pNXs0RdPlLizVOhiJjFryhoYbCHo3O', 1, NULL, '2021-06-13 07:16:10', '2021-06-13 07:16:44');
+(6, 'admin', 'admin@admin.com', NULL, '$2y$10$4KIDIFlHzh5EkwCm2/AugO7pNXs0RdPlLizVOhiJjFryhoYbCHo3O', 1, NULL, '2021-06-13 07:16:10', '2021-06-13 07:16:44'),
+(7, 'Bernie', 'janitor@gmail.com', NULL, 'd41d8cd98f00b204e9800998ecf8427e', 2, NULL, '2021-06-14 03:13:43', '2021-06-14 03:13:43');
 
 --
 -- Indexes for dumped tables
@@ -253,12 +250,6 @@ ALTER TABLE `migrations`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `order__details`
---
-ALTER TABLE `order__details`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -324,13 +315,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `order__details`
---
-ALTER TABLE `order__details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -354,13 +339,13 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
