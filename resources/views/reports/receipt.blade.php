@@ -8,7 +8,7 @@
         </center>
     </div>
     
-    <div class="mid">
+    <div class="mid test-class">
         <div class="info">
             <h2>Contact Us</h2>
             <p>
