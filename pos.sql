@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2021 at 02:43 PM
+-- Generation Time: Jun 16, 2021 at 02:18 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -79,7 +79,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2021_06_13_062459_create_suppliers_table', 1),
 (8, '2021_06_13_062530_create_transactions_table', 1),
 (9, '2021_06_13_062558_create_companies_table', 1),
-(10, '2021_06_13_062639_create_settings_table', 1);
+(10, '2021_06_13_062639_create_settings_table', 1),
+(11, '2021_06_16_055120_create_carts_table', 2),
+(12, '2021_06_16_082320_create_carts_table', 3);
 
 -- --------------------------------------------------------
 
@@ -138,7 +140,9 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `product_name`, `description`, `brand`, `price`, `quantity`, `alert_stock`, `created_at`, `updated_at`) VALUES
 (1, 'Condom', 'Big black condom', 'Wakanda', 600, 100, 99, '2021-06-13 07:56:17', '2021-06-13 08:26:26'),
-(8, 'Dildo', 'Black Pink color', 'Wakanda', 5000, 100, 120, '2021-06-13 21:08:07', '2021-06-13 21:08:07');
+(8, 'Dildo', 'Black Pink color', 'Wakanda', 5000, 100, 120, '2021-06-13 21:08:07', '2021-06-13 21:08:07'),
+(9, 'Blow Up Doll', 'Big Boobies', 'Wakanda', 980, 100, 50, '2021-06-15 07:47:01', '2021-06-15 07:47:01'),
+(10, 'Titan Gel', 'For penny enlargement', 'Wakanda', 150, 99, 120, '2021-06-16 03:27:22', '2021-06-16 03:27:22');
 
 -- --------------------------------------------------------
 
@@ -309,19 +313,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `settings`
