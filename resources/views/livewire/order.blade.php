@@ -15,11 +15,12 @@
                         @csrf
                         <div class="card-body">
                             <div class="my-2">
-                                <form wire:submit.prevemt="InserttoCart">
+                                <form wire:submit.prevent="InserttoCart">
                                     <input type="text" name="" wire:model="product_code" id="" class="form-control"
-                                        placeholder="Enter product code">
+                                        placeholder="Enter product code" wire:change="InserttoCart">
                                 </form>
                             </div>
+                            <div class="alert alert-success">{{ $message }}</div>
                             <table class="table table-bordered table-left">
                                 <thead>
                                     <tr>
@@ -28,45 +29,41 @@
                                         <th>Quantity</th>
                                         <th>Price</th>
                                         <th>Discount(%)</th>
-                                        <th>Total</th>
-                                        <th><a href="#" class="btn btn-sm btn-success rounded-circle add_more"><i
-                                                    class="fas fa-plus-circle"></i></a></th>
+                                        <th colspan="6">Total</th>
+                                        {{-- <th><a href="#" class="btn btn-sm btn-success rounded-circle add_more"><i
+                                                    class="fas fa-plus-circle"></i></a></th> --}}
                                     </tr>
                                 </thead>
                                 <tbody class="addMoreProduct">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            <select name="product_id[]" id="product_id" class="form-control product_id">
-                                                <option value="">Select Item</option>
-                                                @foreach ($products as $product)
-                                                    <option data-price="{{ $product->price }}"
-                                                        value="{{ $product->id }}">{{ $product->product_name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
+                                    @foreach ($productIncart as $key=> $cart)
+                                        <tr>
+                                            <td class="no">{{ $key + 1 }}</td>
+                                            <td width="30%">
+                                                <input type="text" class="form-control" value="{{ $cart->product->product_name }}" name=""
+                                                    id="">
+                                            </td>
+                                            <td>
+                                                <input type="number" value="{{ $cart->product_qty }}"
+                                                    name="quantity[]" id="quantity" class="form-control quantity">
+                                            </td>
+                                            <td>
+                                                <input type="number" name="price[]" id="price"
+                                                    value="{{ $cart->product->price }}" class="form-control price">
+                                            </td>
+                                            <td>
+                                                <input type="number" name="discount[]" id="discount"
+                                                    class="form-control discount">
+                                            </td>
+                                            <td>
+                                                <input type="number" name="total_amount[]" id="total_amount"
+                                                    value="{{ $cart->product_qty * $cart->product->price }}"
+                                                    class="form-control total_amount">
+                                            </td>
+                                            <td><a href="#" class="btn btn-sm btn-danger rounded-circle"><i
+                                                        class="fas fa-trash" wire:click="removeProduct({{ $cart->id }})"></i></a></td>
 
-                                        </td>
-                                        <td>
-                                            <input type="number" name="quantity[]" id="quantity"
-                                                class="form-control quantity">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="price[]" id="price" class="form-control price">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="discount[]" id="discount"
-                                                class="form-control discount">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="total_amount[]" id="total_amount"
-                                                class="form-control total_amount">
-                                        </td>
-                                        <td><a href="#" class="btn btn-sm btn-danger rounded-circle"><i
-                                                    class="fas fa-trash"></i></a></td>
-
-                                    </tr>
-
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

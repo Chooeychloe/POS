@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Cart;
 use App\Models\Order_Detail;
 use Illuminate\Support\Facades\App;
 use Illuminate\Database\Eloquent\Model;
@@ -19,5 +20,8 @@ class Product extends Model
 
     public function orderdetail(){
             return $this->hasMany('App\Models\Order_Detail');
-    }                      
+    } 
+    public function cart(){
+        return $this->belongsTo('App\Models\Cart');
+}                     
 }
