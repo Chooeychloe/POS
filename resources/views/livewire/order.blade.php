@@ -15,8 +15,10 @@
                         @csrf
                         <div class="card-body">
                             <div class="my-2">
-                                {{ $product_code }}
-                                <input type="text" name="" wire:model="product_code" id="" class="form-control" placeholder="Enter product code">
+                                <form wire:submit.prevemt="InserttoCart">
+                                    <input type="text" name="" wire:model="product_code" id="" class="form-control"
+                                        placeholder="Enter product code">
+                                </form>
                             </div>
                             <table class="table table-bordered table-left">
                                 <thead>
