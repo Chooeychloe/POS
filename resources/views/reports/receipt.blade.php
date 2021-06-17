@@ -4,7 +4,7 @@
         <center id="logo">
             <div class="logo"> PEPAY's</div>
             <div class="info"></div>
-            <h2>Pepay's PEPS Ltd</h2>
+            <h2>Pepay's Sexual Desires Ltd</h2>
         </center>
     </div>
     
