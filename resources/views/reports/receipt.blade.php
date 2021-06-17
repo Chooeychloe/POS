@@ -43,16 +43,16 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="Rate"> <p class="itemtext">Tax</p> </td>
-                    <td class="Payment"><p class="itemtext">$ 100</p></td>
+                    <td class="Rate"> <p class="itemtext">Tax <br></p> </td>
+                    <td class="Payment"><p class="itemtext">Sub Total <br> Php{{number_format( $receipt -> amount, 2)}}</p></td>
                 </tr>
                 <tr class="tabletitle">
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td class="Rate"> Total </td>
+                    <td class="Rate"><h2>Total</h2>  </td>
                     <td class="Payment"><h2>
-                        $ 100
+                      Php{{ number_format($order_receipt->sum('amount'), 2) }}
                     </h2> </td>
                 </tr>
             </table>

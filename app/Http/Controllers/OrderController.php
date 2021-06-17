@@ -57,10 +57,11 @@ class OrderController extends Controller
             $orders -> name = $request -> customer_name;
             $orders -> phone = $request -> customer_phone;
             $orders -> save();
-            $order_id = $orders -> id;
+            $order_id = $orders -> id; 
+            
+            $order_details = new Order_Detail;
 
             for ($product_id=0; $product_id < count($request->product_id); $product_id++) { 
-                $order_details = new Order_Detail;
                 $order_details -> order_id = $order_id;
                 $order_details -> product_id = $request -> product_id[$product_id];
                 $order_details -> unitprice = $request -> price[$product_id];
@@ -72,7 +73,7 @@ class OrderController extends Controller
             
            
 
-            $transaction = new Transaction;
+            $transaction = new Transaction();
             $transaction -> order_id = $order_id;
             $transaction -> user_id = auth()->user()->id;
             $transaction -> balance = $request -> balance;
