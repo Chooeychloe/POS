@@ -38,7 +38,7 @@
                     <td class="tableitem"><p class="itemtext">{{number_format( $receipt -> amount, 2)}}</p></td>
                    
                 </tr>
-                @endforeach
+                
                 <tr class="tabletitle">
                     <td></td>
                     <td></td>
@@ -52,9 +52,10 @@
                     <td></td>
                     <td class="Rate"><h2>Total</h2>  </td>
                     <td class="Payment"><h2>
-                      Php{{ number_format($order_receipt->sum('amount'), 2) }}
+                      Php{{ number_format($receipt->sum('amount'), 2) }}
                     </h2> </td>
                 </tr>
+                @endforeach
             </table>
 
             <div class="legalcopy">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Transaction;
@@ -59,9 +60,9 @@ class OrderController extends Controller
             $orders -> save();
             $order_id = $orders -> id; 
             
-            $order_details = new Order_Detail;
-
+           
             for ($product_id=0; $product_id < count($request->product_id); $product_id++) { 
+                $order_details = new Order_Detail;
                 $order_details -> order_id = $order_id;
                 $order_details -> product_id = $request -> product_id[$product_id];
                 $order_details -> unitprice = $request -> price[$product_id];
@@ -82,6 +83,9 @@ class OrderController extends Controller
             $transaction -> transac_amount = $order_details -> amount;
             $transaction -> transac_date = date('Y-m-d');
             $transaction -> save();
+
+            Cart::where('user_id', auth()->user()->id)->delete();
+          
 
             //Last Order History
             $products = Product::all();
