@@ -1,8 +1,11 @@
 <div id="invoice-POS">
     <?php $total = 0;
         $tax = 0;
+        $date = date("Y-m-d");
+        // print_r($order_receipt);
     ?>
     <nav id="receipt-nav">
+        <img src="/images/receipt-nav-bg.png" class="receipt-nav-bg">
         <div class="name-cotainer">
             <h1 class="company-name">STONE BASE</h1>
             
@@ -14,6 +17,7 @@
         <div class="logo-container">
             <img class="logo" src="/images/logo.png" alt="logo">
         </div>
+        
     </nav>
     
     <section class="heading">
@@ -32,8 +36,8 @@
             </div>
             <div>
                 <h6>1234</h6>
-                <h6>20-01-2001</h6>
-                <h6>John Doe</h6>
+                <h6><?= $date ?></h6>
+                <h6>Bacoor, Cavite</h6>
             </div>
         </div>
         <div>
@@ -48,6 +52,7 @@
             <h3>Unit</h3>
             <h3>Discount</h3>
             <h3>Subtotal</h3>
+            <img src="/images/receipt-thead-bg.jpg" class="t-head-bg">
         </div>
 
         <div class="t-body">
@@ -70,11 +75,12 @@
             @endforeach
 
         </div>
-
+        <?php $tax = $total * 0.15;
+             $total += $tax ?>
         {{-- Tax --}}
         <div class="tax-price">
             <h2>Tax</h2>
-            <h2>₱100</h2>
+            <h2><?= $tax ?></h2>
         </div>
         {{-- Total price --}}
         <div class="total-price">
@@ -102,12 +108,15 @@
     }
 
     #receipt-nav{
-        background: url('/images/receipt-nav-bg.png');
-        background-repeat: no-repeat;
-        background-size: 80%;
         max-height: 15mm;
         display: flex;
         justify-content: space-between;
+        position: relative;
+    }
+
+    .receipt-nav-bg {
+        position: absolute;
+        width: 80%;
     }
 
     .logo{
@@ -131,7 +140,7 @@
 
     .company-name{
         font-size: 20px;
-        color: #fff;
+        color: rgb(255,255,255);
         text-align: center;
         margin: auto 10px;
     }
@@ -195,12 +204,10 @@
     }
     
     .t-head {
-        background: url('/images/receipt-thead-bg.jpg');
-        background-size: 100%;
-        background-repeat: no-repeat;
         padding: 10px 10px;
         display: flex;
         justify-content: space-evenly;
+        position: relative;
     }
 
     .t-head h3{
@@ -208,6 +215,8 @@
         color: #fff;
         text-align: center;
         width: 100%;
+        z-index: 20;
+        margin-top: 10px;
     }
 
     .t-head h3:nth-child(1){
@@ -216,6 +225,13 @@
 
     .t-row h3:nth-child(1){
         margin-right: 50px;
+    }
+
+    .t-head-bg {
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        
     }
 
     .t-body {
