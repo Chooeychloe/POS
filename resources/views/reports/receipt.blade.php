@@ -92,63 +92,6 @@
             </p>
         </div>
     </footer>
-
-    <div class="bot" style="display: none">
-        <div id="table">
-            <table>
-                <tr class="tabletitle">
-                    <td class="item"><h2>Item</h2></td>
-                    <td class="Hours"><h2>Quantity</h2></td>
-                    <td class="Rate"><h2>Unit</h2></td>
-                    <td class="Rate"><h2>Discount</h2></td>
-                    <td class="Rate"><h2>Subtotal</h2></td>
-                </tr>
-                @foreach ($order_receipt as $receipt)
-                    
-                <tr class="service">
-                    <td class="tableitem"><p class="itemtext">{{$receipt -> product-> product_name}}</p></td>
-                    <td class="tableitem"><p class="itemtext">{{number_format( $receipt -> unitprice, 2)}}</p></td>
-                    <td class="tableitem"><p class="itemtext">{{$receipt -> quantity}}</p></td>
-                    <td class="tableitem"><p class="itemtext">{{$receipt -> discount ? ' ': '0'}}</p></td>
-                    <td class="tableitem"><p class="itemtext">{{number_format( $receipt -> amount, 2)}}</p></td>
-                   
-                </tr>
-                
-                <tr class="tabletitle">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="Rate"> <p class="itemtext">Tax <br></p> </td>
-                    <td class="Payment"><p class="itemtext">Sub Total <br> Php{{number_format( $receipt -> amount, 2)}}</p></td>
-                </tr>
-                <tr class="tabletitle">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="Rate"><h2>Total</h2>  </td>
-                    <td class="Payment"><h2>
-                      Php{{ number_format($receipt->sum('amount'), 2) }}
-                    </h2> </td>
-                </tr>
-                @endforeach
-            </table>
-
-            <div class="legalcopy">
-                <p class="legal">
-                    <strong>** Thank you for visiting **
-                    <br>
-                    The goods are subject to taxes. Prices includes tax.
-                </strong>
-                </p>
-            </div>
-            <div class="serial-number">
-               Serial #: <span class="serial">
-                    12345567888 <br>
-                </span>
-                <span> 215/06/2020 &nbsp; &nbsp; 15: 06</span>
-            </div>
-        </div>
-    </div>
 </div>
 
 <style>
