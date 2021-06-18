@@ -56,9 +56,9 @@
             <div class="t-row">
                 <h3>{{$receipt -> product-> product_name}}</h3>
                 <h3>{{$receipt -> quantity}}</h3>
-                <h3>{{number_format( $receipt -> unitprice, 2)}}</h3>
+                <h3>₱{{number_format( $receipt -> unitprice, 2)}}</h3>
                 <h3>{{$receipt -> discount ? ' ': '0'}}</h3>
-                <h3>{{number_format( $receipt -> amount, 2)}}</h3>
+                <h3>₱{{number_format( $receipt -> amount, 2)}}</h3>
             </div>
 
             @php
