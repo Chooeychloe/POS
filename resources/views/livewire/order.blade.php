@@ -93,7 +93,7 @@
                     <div class="card-header">
                         <h4>Total <b class="total"> {{ $productIncart->sum('product_price') }}</b></h4>
                     </div>
-                    <form action="{{ route('orders.store') }}" method="post">
+                    <form action="{{ route('orders.store') }}" method="post" id="orderForm">
                         @csrf
 
                         @foreach ($productIncart as $key => $cart)
@@ -249,3 +249,22 @@
         </div>
     </div>
 </div>
+
+<script>
+     $("#orderForm").submit(function(e){
+        var isPaymentNull =  $("#paid_amount").val() <= 0;
+        var isChangeInvalid = $("#balance").val() < 0;
+
+        if(isPaymentNull){
+            e.preventDefault(); 
+            alert("Payment is Required");
+            return;
+        }
+
+        if(isChangeInvalid){
+            e.preventDefault(); 
+            alert("Change should not be negative value.");
+            return;
+        }
+    });
+</script>

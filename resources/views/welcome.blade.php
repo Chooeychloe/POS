@@ -82,10 +82,12 @@
                     </div>
                 </section>
 
-                <section class="flex justify-center sm:justify-end lg:justify-start space-x-4 lg:pl-24 xl:pl-10 col-span-2 sm:col-span-1">
-                    <a href="#story" class="h-max my-auto text-white lg:text-blue-600  bg-blue-500 rounded-md py-1 px-2 bg-opacity-0 hover:text-white hover:bg-opacity-100 transition-all text-sm lg:text-base">ABOUT US</a>
-                    <a href="#offer" class="h-max my-auto text-white lg:text-blue-600  bg-blue-500 rounded-md py-1 px-2 bg-opacity-0 hover:text-white hover:bg-opacity-100 transition-all text-sm lg:text-base"">SERVICES</a>
-                    <a href="#footer" class="h-max my-auto text-white lg:text-blue-600  bg-blue-500 rounded-md py-1 px-2 bg-opacity-0 hover:text-white hover:bg-opacity-100 transition-all text-sm lg:text-base">CONTACT US</a>
+                <section class="flex justify-center sm:justify-end lg:justify-start space-x-2 lg:pl-24 xl:pl-10 col-span-2 sm:col-span-1">
+                    <a href="#story" class="h-max my-auto text-white lg:text-blue-600  bg-blue-500 rounded-md py-1 px-2 bg-opacity-0 hover:text-white hover:bg-opacity-100 transition-all text-xs xl:text-sm">ABOUT US</a>
+                    <a href="#offer" class="h-max my-auto text-white lg:text-blue-600  bg-blue-500 rounded-md py-1 px-2 bg-opacity-0 hover:text-white hover:bg-opacity-100 transition-all text-xs xl:text-sm"">SERVICES</a>
+                    <a href="#footer" class="h-max my-auto text-white lg:text-blue-600  bg-blue-500 rounded-md py-1 px-2 bg-opacity-0 hover:text-white hover:bg-opacity-100 transition-all text-xs xl:text-sm">CONTACT US</a>
+                    <a href="/login" class="h-max my-auto text-white lg:text-blue-600  bg-blue-500 rounded-md py-1 px-2 bg-opacity-0 hover:text-white hover:bg-opacity-100 transition-all text-xs xl:text-sm">LOG IN</a>
+                    <a href="/register" class="h-max my-auto text-white lg:text-blue-600  bg-blue-500 rounded-md py-1 px-2 bg-opacity-0 hover:text-white hover:bg-opacity-100 transition-all text-xs xl:text-sm">REGISTER</a>
                 </section>
             </div>
         </nav>
