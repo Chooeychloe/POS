@@ -31,12 +31,13 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/orders', 'OrderController');//orders.index
-Route::resource('/products', 'ProductController');//orders.index
+Route::resource('/products', 'ProductController');//products.index
 Route::get('/products-count', [ProductController::class, 'count']);
-Route::resource('/suppliers', 'SuppliersController');//orders.index
-Route::resource('/users', 'UserController');//orders.index
-Route::resource('/companies', 'CompanyController');//orders.index
-Route::resource('/transactions', 'TransactionController');//orders.index
+Route::resource('/suppliers', 'SuppliersController');//suppliers.index
+Route::resource('/users', 'UserController');//users.index
+Route::resource('/companies', 'CompanyController');//companies.index
+Route::resource('/transactions', 'TransactionController');//transactions.index
+Route::get('barcode', 'ProductController@GetProductBarcodes')->name('products.barcode');//products.barcode
 
 // API's
 Route::get('/api/suppliers', function () {

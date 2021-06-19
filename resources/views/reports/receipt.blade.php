@@ -35,7 +35,7 @@
                 </h6>
             </div>
             <div>
-                <h6>1234</h6>
+                <h6><?= $serial = rand(1000, 10000)?></h6>
                 <h6><?= $date ?></h6>
                 <h6>Bacoor, Cavite</h6>
             </div>
@@ -76,11 +76,11 @@
 
         </div>
         <?php $tax = $total * 0.15;
-             $total += $tax ?>
+            //  $total += $tax ?>
         {{-- Tax --}}
         <div class="tax-price">
             <h2>Tax</h2>
-            <h2><?= $tax ?></h2>
+            <h2>₱0</h2>
         </div>
         {{-- Total price --}}
         <div class="total-price">
