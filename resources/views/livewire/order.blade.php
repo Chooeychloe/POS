@@ -1,4 +1,17 @@
 <div class="container-fluid">
+    
+    @if (session('order-success'))
+    <section class="alert-added col-12">
+        <div class="alert alert-success d-flex justify-content-between">
+            <div>
+                {{ session('order-success') }}
+            </div>
+            <div>
+                <button class="close-alert btn-close"></button>
+            </div>
+        </div>
+    </section>
+    @endif
     <div class="col-lg-12">
         <div class="row">
             <div class="col-md-8">
@@ -10,6 +23,9 @@
                             data-target="#addproduct">
                             <i class="fas fa-plus"> Add New Products</i></a>
                     </div>
+                    @error('product_id')
+                        <strong class="text-danger">{{ $message }}</strong>
+                    @enderror    
                     <div class="card-body">
                         <div class="my-2">
                             <form wire:submit.prevent="InserttoCart">
@@ -93,6 +109,7 @@
                     <div class="card-header">
                         <h4>Total <b class="total"> {{ $productIncart->sum('product_price') }}</b></h4>
                     </div>
+                             
                     <form action="{{ route('orders.store') }}" method="post" id="orderForm">
                         @csrf
 
@@ -165,13 +182,17 @@
                                     </td> <br>
                                     <td>
                                         Payment
-                                        <input type="number" wire:model="pay_money" name="paid_amount" id="paid_amount"
-                                            class="form-control">
+                                        <input type="number" wire:model="pay_money" name="paid_amount" id="paid_amount" class="form-control @error('paid_amount') border border-danger @enderror" value="{{ old('paid_amount') }}">
+                                        @error('paid_amount')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror    
                                     </td>
                                     <td>
                                         Change
-                                        <input type="number" wire:model="balance" readonly name="balance" id="balance"
-                                            class="form-control">
+                                        <input type="number" wire:model="balance" readonly name="balance" id="balance" class="form-control @error('balance') border border-danger @enderror" value="{{ old('balance') }}">
+                                        @error('balance')
+                                            <strong class="text-danger">{{ $message }}</strong>
+                                        @enderror     
                                     </td>
                                     <td>
                                         <button class="btn-primary btn-lg btn-block mt-3">Save</button>
@@ -249,22 +270,3 @@
         </div>
     </div>
 </div>
-
-<script>
-     $("#orderForm").submit(function(e){
-        var isPaymentNull =  $("#paid_amount").val() <= 0;
-        var isChangeInvalid = $("#balance").val() < 0;
-
-        if(isPaymentNull){
-            e.preventDefault(); 
-            alert("Payment is Required");
-            return;
-        }
-
-        if(isChangeInvalid){
-            e.preventDefault(); 
-            alert("Change should not be negative value.");
-            return;
-        }
-    });
-</script>

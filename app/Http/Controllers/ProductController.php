@@ -41,6 +41,18 @@ class ProductController extends Controller
 
         //product code sectiom
 
+        // if(!$request->description){
+        //     return redirect()->back()->with(, 'Product description is required.');
+        // }
+
+        $validated = $request->validate([
+            'description' => 'required',
+            'product_name' => 'required',
+            'price' => 'required',
+            'alert_stock' => 'required',
+            'quantity' => 'required',
+        ]);
+
         $product_code = rand(109876543, 1000000000);
 
         $redColor = '255, 0 , 0';

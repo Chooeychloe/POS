@@ -21,14 +21,14 @@ use App\Models\Order;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/orders', 'OrderController');//orders.index
 Route::resource('/products', 'ProductController');//products.index
@@ -52,6 +52,3 @@ Route::get('/api/product', function () {
 Route::get('/api/orders', function () {
     return OrderResource::collection(Order::all());
 });
-
-// Dashboard
-Route::resource('/dashboard', 'DashboardController');
