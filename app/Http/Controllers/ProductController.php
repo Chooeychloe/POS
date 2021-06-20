@@ -49,6 +49,8 @@ class ProductController extends Controller
             'description' => 'required',
             'product_name' => 'required',
             'price' => 'required',
+            'alert_stock' => 'required',
+            'quantity' => 'required',
         ]);
 
         $product_code = rand(109876543, 1000000000);

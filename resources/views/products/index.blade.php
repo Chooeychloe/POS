@@ -3,10 +3,18 @@
 @section('content')
 
 <div class="container-fluid">
+    
     @if (session('success'))
-    <div class="alert alert-success col-12">
-        {{ session('success') }}
-    </div>
+    <section class="alert-added">
+        <div class="alert alert-success col-12 d-flex justify-content-between">
+            <div>
+                {{ session('success') }}
+            </div>
+            <div>
+                <button class="close-alert btn-close"></button>
+            </div>
+        </div>
+    </section>
     @endif
     <div class="col-lg-12">
         <div class="row">
@@ -197,12 +205,18 @@
 
             <div class="form-group">
                 <label for="">Quantity</label>
-                <input type="number" name="quantity" id="" class="form-control">
+                <input type="number" name="quantity" id="" class="form-control @error('quantity') border border-danger @enderror" value="{{ old('quantity') }}">
+                @error('quantity')
+                <strong class="text-danger">{{ $message }}</strong>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label for="">Alert Stock</label>
-                <input type="number" name="alert_stock" id="" class="form-control">
+                <input type="number" name="alert_stock" id="" class="form-control @error('alert_stock') border border-danger @enderror" value="{{ old('alert_stock') }}">
+                @error('alert_stock')
+                <strong class="text-danger">{{ $message }}</strong>
+                @enderror
             </div>
 
             <div class="form-group">
