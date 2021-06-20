@@ -97,14 +97,16 @@ class ProductController extends Controller
         $product_code = rand(109876543, 1000000000);
 
         $redColor = '255, 0 , 0';
-        $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
-        $barcodes = $generator->getBarcode($product_code, $generator::TYPE_STANDARD_2_5, 2, 60);
+        $generator = new Picqer\Barcode\BarcodeGeneratorJPG();
+        file_put_contents('products/barcodes/' .$product_code . '.jpg',
+        $generator->getBarcode($product_code,
+        $generator::TYPE_CODE_128, 3, 50));
 
        
         $products = Product::find($products);
         $products->product_name = $request->product_name;
         $products->product_code = $product_code;
-        $products->barcode = $barcodes;
+        $products->barcode = $product_code . '.jpg';
         $products->quantity = $request->quantity;
         $products->price = $request->price;
         $products->brand = $request->brand;
