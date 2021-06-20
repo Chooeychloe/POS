@@ -78,11 +78,9 @@ class Order extends Component
 
         $deleteCart =  Cart::find($cartId);
         $deleteCart -> delete();
-
+        $this->productIncart = $this->productIncart -> except($cartId);
         return session()->flash('error', 'Product removed from the list.');
         // $this->message = "Product removed from Cart.";
-
-        $this->productIncart = $this->productIncart -> except($cartId);
     }
 
     public function render()

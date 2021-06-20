@@ -50,7 +50,12 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // dd($request);
+        $validated = $request->validate([
+            'balance' => 'required|gte:0',
+            'paid_amount' => 'required|gt:0',
+            "product_id"    => "required|array|min:1",
+        ]);
 
         DB::transaction(function() use($request){
             
@@ -92,6 +97,7 @@ class OrderController extends Controller
             $order_details = Order_Detail::where('order_id', $order_id)->get();
             $orderedBy = Order::where('id', $order_id)->get();
 
+            back()->with('order-success', 'Order Created Successfully!');
             return view('orders.index', [
                 'products' => $products,
                 'order_details' => $order_details,

@@ -3,13 +3,26 @@
 @section('content')
 
 <div class="container-fluid">
+    
+    @if (session('success'))
+    <section class="alert-added">
+        <div class="alert alert-success col-12 d-flex justify-content-between">
+            <div>
+                {{ session('success') }}
+            </div>
+            <div>
+                <button class="close-alert btn-close"></button>
+            </div>
+        </div>
+    </section>
+    @endif
     <div class="col-lg-12">
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
                         <h4 style="float: left"><i class="fas fa-box"></i> Products</h4>
-                        <a href="#" style="float: right" class="btn btn-dark" 
+                        <a href="#" style="float: right" class="btn btn-dark add-product-trigger" 
                         data-toggle="modal" data-target="#addproduct">
                             <i class="fas fa-plus"> Add New Products</i></a></div>
                     <div class="card-body">
@@ -170,7 +183,10 @@
 
             <div class="form-group">
                 <label for="">Product Name</label>
-                <input type="text" name="product_name" id="" class="form-control">
+                <input type="text" name="product_name" value="{{ old('product_name') }}" id="" class="form-control @error('product_name') border border-danger @enderror">
+                @error('product_name')
+                <strong class="text-danger">{{ $message }}</strong>
+                @enderror
             </div>
 
             <div class="form-group">
@@ -181,22 +197,34 @@
 
             <div class="form-group">
                 <label for="">Price</label>
-                <input type="number" name="price" id="" class="form-control">
+                <input type="number" name="price" id="" class="form-control @error('price') border border-danger @enderror" value="{{ old('price') }}">
+                @error('price')
+                <strong class="text-danger">{{ $message }}</strong>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label for="">Quantity</label>
-                <input type="number" name="quantity" id="" class="form-control">
+                <input type="number" name="quantity" id="" class="form-control @error('quantity') border border-danger @enderror" value="{{ old('quantity') }}">
+                @error('quantity')
+                <strong class="text-danger">{{ $message }}</strong>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label for="">Alert Stock</label>
-                <input type="number" name="alert_stock" id="" class="form-control">
+                <input type="number" name="alert_stock" id="" class="form-control @error('alert_stock') border border-danger @enderror" value="{{ old('alert_stock') }}">
+                @error('alert_stock')
+                <strong class="text-danger">{{ $message }}</strong>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label for="">Description</label>
-                <textarea name="description" id="" cols="30" rows="2" class="form-control"></textarea>
+                <textarea name="description" id="" cols="30" rows="2" class="form-control @error('description') border border-danger @enderror" value="{{ old('description') }}"></textarea>
+                @error('description')
+                <strong class="text-danger">{{ $message }}</strong>
+                @enderror
             </div>
             
             <div class="modal-footer">
@@ -222,5 +250,16 @@
           transform: translate3d(25%, 0, 0);
       }
   </style>
+
+@endsection
+@section('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    @if ($errors->any())
+    $('.add-product-trigger').click();
+    @endif
+});    
+</script>
 
 @endsection

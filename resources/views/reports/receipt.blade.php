@@ -57,7 +57,9 @@
 
         <div class="t-body">
             {{-- ROW --}}
+            
             @foreach ($order_receipt as $receipt)
+            @if (array_key_exists("product",(array)$receipt))
             <div class="t-row">
                 <h3>{{$receipt -> product-> product_name}}</h3>
                 <h3>{{$receipt -> quantity}}</h3>
@@ -65,15 +67,12 @@
                 <h3>{{$receipt -> discount ? ' ': '0'}}</h3>
                 <h3>₱{{number_format( $receipt -> amount, 2)}}</h3>
             </div>
-
-            @php
             
-            @endphp
 
             <?php $total += $receipt->amount ?>
-
+            @endif
             @endforeach
-
+           
         </div>
         <?php $tax = $total * 0.15;
             //  $total += $tax ?>
