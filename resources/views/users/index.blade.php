@@ -3,13 +3,25 @@
 @section('content')
 
 <div class="container-fluid">
+    @if (session('success'))
+    <section class="alert-added col-12">
+        <div class="alert alert-success d-flex justify-content-between">
+            <div>
+                {{ session('success') }}
+            </div>
+            <div>
+                <button class="close-alert btn-close"></button>
+            </div>
+        </div>
+    </section>
+    @endif
     <div class="col-lg-12">
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
                         <h4 style="float: left"><i class="fas fa-user"></i> Users</h4>
-                        <a href="#" style="float: right" class="btn btn-dark" 
+                        <a href="#" style="float: right" class="btn btn-dark add-item" 
                         data-toggle="modal" data-target="#addUser">
                             <i class="fas fa-plus"> Add New Users</i></a></div>
                     <div class="card-body">
@@ -153,27 +165,42 @@
 
             <div class="form-group">
                 <label for="">Name</label>
-                <input type="text" name="name" id="" class="form-control">
+                <input type="text" name="name" id="" class="form-control @error('name') border border-danger @enderror" value="{{ old('name') }}">
+                @error('name')
+                    <strong class="text-danger">{{ $message }}</strong>
+                @enderror  
             </div>
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="email" name="email" id="" class="form-control">
+                <input type="email" name="email" id="" class="form-control @error('email') border border-danger @enderror" value="{{ old('email') }}">
+                @error('email')
+                    <strong class="text-danger">{{ $message }}</strong>
+                @enderror 
             </div>
 
             <div class="form-group">
                 <label for="">Password</label>
-                <input type="password" name="password" id="" class="form-control">
+                <input type="password" name="password" id="" class="form-control @error('password') border border-danger @enderror">
+                @error('password')
+                    <strong class="text-danger">{{ $message }}</strong>
+                @enderror 
             </div>
             <div class="form-group">
                 <label for="">Confirm Password</label>
-                <input type="password" name="comfirm_password" id="" class="form-control">
+                <input type="password" name="confirm_password" id="" class="form-control @error('confirm_password') border border-danger @enderror">
+                @error('confirm_password')
+                    <strong class="text-danger">{{ $message }}</strong>
+                @enderror 
             </div>
             <div class="form-group">
                 <label for="">Role</label>
-                <select name="is_admin" id="" class="form-control">
+                <select name="is_admin" id="" class="form-control @error('is_admin') border border-danger @enderror" value="{{ old('is_admin') }}">
                     <option value="1">Admin</option>
                     <option value="2">Cashier</option>
                 </select>
+                @error('is_admin')
+                    <strong class="text-danger">{{ $message }}</strong>
+                @enderror
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary btn-block">Save User</button>

@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 style="float: left"><i class="fas fa-box"></i> Products</h4>
-                        <a href="#" style="float: right" class="btn btn-dark add-product-trigger" 
+                        <a href="#" style="float: right" class="btn btn-dark add-item" 
                         data-toggle="modal" data-target="#addproduct">
                             <i class="fas fa-plus"> Add New Products</i></a></div>
                     <div class="card-body">
@@ -254,12 +254,5 @@
 @endsection
 @section('script')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    @if ($errors->any())
-    $('.add-product-trigger').click();
-    @endif
-});    
-</script>
 
 @endsection

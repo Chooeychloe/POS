@@ -149,9 +149,14 @@
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
     </script>
     <script>
-        $('.close-alert').click(function(){
-            $('.alert-added').hide(400);
-        });
+        $(document).ready(function() {
+            $('.close-alert').click(function(){
+                $('.alert-added').hide(400);
+            });
+            @if ($errors->any())
+            $('.add-item').click();
+            @endif
+        }); 
     </script>
     @livewireScripts()
 </body>

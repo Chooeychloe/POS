@@ -38,15 +38,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+        $password = $request->password;
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email:rfc|unique:App\Models\User,email',
+            'password' => 'required|min:8',
+            'confirm_password' => 'required|in:'.$password,
+            'is_admin' => 'required',
+        ]);
+
         $users = new User;
         $users->name = $request->name;
         $users->email = $request->email;
         $users->password = md5($request->pasword);
         $users->is_admin = $request->is_admin;
-        $users->save();
-
-        if($users){
-            return redirect()->back()->with('User Created Successfully');
+        if($users->save()){
+            return redirect()->back()->with('success','User Created Successfully');
         }
         return redirect()->back()->with('User Creation Failed');
     }
@@ -87,7 +95,7 @@ class UserController extends Controller
             return back()->with('Error', 'User not found');
         }
         $users->update($request->all());
-        return back()->with('Success', 'User Updated Successfully!');
+        return back()->with('success', 'User Updated Successfully!');
     }
 
     /**
