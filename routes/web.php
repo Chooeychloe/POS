@@ -29,6 +29,7 @@ Route::get('/welcome', function () {
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/orders', 'OrderController');//orders.index
 Route::resource('/products', 'ProductController');//products.index
