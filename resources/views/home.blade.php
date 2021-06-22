@@ -90,6 +90,17 @@
                             </div>
                             </div>
                         </a>
+                        <a href="/products" class="bg-danger bg-gradient p-3 rounded d-inline-block m-1 w-card text-decoration-none">
+                            <div class="d-flex justify-content-between">
+                            <div class="text-white flex">
+                                 <ion-icon class="fs-icon" name="alert-outline"></ion-icon>
+                            </div>
+                            <div class="text-white text text-end">
+                                <h3 class="fs-2" id="product-low-stack">-</h3>
+                                <h6 style="font-size: 10px">LOW STOCK PRODUCT</h6>
+                            </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -119,12 +130,14 @@ function getProducts(){
         var totalProducts = 0;
         var productNames = [];
         var productQuantity = [];
+        var lowStockProduct = 0;
         var productChart = document.getElementById('productChart').getContext('2d');
-        // console.log(products);
+        console.log(products);
         for(var i = 0; i < products.length; i++){
             totalProducts++;
             productNames[i] = products[i].product_name;
             productQuantity[i] = products[i].quantity;
+            if(products[i].quantity < products[i].alert_stock)lowStockProduct++;
         }
         
         var myChart = new Chart(productChart, {
@@ -153,6 +166,7 @@ function getProducts(){
         });
 
         $("#product-count").html(totalProducts);
+        $("#product-low-stack").html(lowStockProduct);
     });
 }
 
