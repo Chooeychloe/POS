@@ -37,14 +37,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request->all();
-
-        //product code sectiom
-
-        // if(!$request->description){
-        //     return redirect()->back()->with(, 'Product description is required.');
-        // }
-
         $validated = $request->validate([
             'description' => 'required',
             'product_name' => 'required',
@@ -59,7 +51,7 @@ class ProductController extends Controller
         $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
         $barcodes = $generator->getBarcode($product_code, $generator::TYPE_STANDARD_2_5, 2, 60);
 
-        Product::create($request->all());
+        // Product::create($request->all());
         $products = new Product;
         $products->product_name = $request->product_name;
         $products->product_code = $product_code;
