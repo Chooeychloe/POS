@@ -134,9 +134,13 @@
             .fs-icon {
                 font-size: 4rem;
             }
-
             .w-card {
                 width: 200px
+            }
+
+            .if-empty-remove:empty{
+                background-color: red;
+                display: none;
             }
 
         </style>
@@ -156,6 +160,16 @@
             @if ($errors->any())
             $('.add-item').click();
             @endif
+
+            $("#search-table").bind("DOMSubtreeModified", function() {
+                if($("#search-table").innerHeight() > 0){
+                    $("#main-table").hide(100);
+                    $(".pagination").hide(100);
+                }else{
+                    $("#main-table").show(100);
+                    $(".pagination").show(100);
+                }
+            });
         }); 
     </script>
     @livewireScripts()

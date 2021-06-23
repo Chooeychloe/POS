@@ -25,8 +25,12 @@
                         <a href="#" style="float: right" class="btn btn-dark add-item" 
                         data-toggle="modal" data-target="#addproduct">
                             <i class="fas fa-plus"> Add New Products</i></a></div>
-                    <div class="card-body">
-                        <table class="table table-bordered table-left">
+                    <div class="card-body overflow-auto" >
+                        <section id="search-table">
+                            @livewire('table',['tableColumns' => array_keys($products->first()->toArray()), 'excludedColumns' => ['id','product_code','barcode','created_at','updated_at'], 'tableTitle' => 'Search Product'])
+                        </section>  
+
+                        <table class="table table-bordered table-left" id="main-table">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -53,7 +57,7 @@
                                     @else
                                         <span class="badge badge-success">{{$product->alert_stock}}</span>
                                     @endif
-                                        </td>
+                                    </td>
                                     <td>{{$product->description}}</td>
                                     
                                    <td>
@@ -158,12 +162,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3"><div class="card">
-                <div class="card-header"><h4>Search product</h4></div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header"><h4>Search product</h4></div>
                     <div class="card-body">
-                        ...
+                        @livewire('item-search',['searchModel' => 'Products','searchColumns' => ['product_name','brand','id'] ])
                     </div>
-            </div></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -254,5 +260,4 @@
 @endsection
 @section('script')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 @endsection

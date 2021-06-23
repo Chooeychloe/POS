@@ -24,8 +24,11 @@
                         <a href="#" style="float: right" class="btn btn-dark add-item" 
                         data-toggle="modal" data-target="#addUser">
                             <i class="fas fa-plus"> Add New Users</i></a></div>
-                    <div class="card-body">
-                        <table class="table table-bordered table-left">
+                    <div class="card-body overflow-auto">
+                        <section id="search-table">
+                            @livewire('table',['tableColumns' => array_keys($users->first()->toArray()), 'excludedColumns' => ['id','email_verified_at','created_at','updated_at'], 'tableTitle' => 'Search Users'])
+                        </section>  
+                        <table class="table table-bordered table-left" id="main-table">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -140,12 +143,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3"><div class="card">
-                <div class="card-header"><h4>Search user</h4></div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header"><h4>Search user</h4></div>
                     <div class="card-body">
-                        ...
+                        @livewire('item-search',['searchModel' => 'Users','searchColumns' => ['name','email','id'] ])
                     </div>
-            </div></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
